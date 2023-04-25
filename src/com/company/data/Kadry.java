@@ -25,7 +25,5 @@ public abstract class Kadry {
         this.name = str;
     }
 
-
-
     public abstract String Type();
 }

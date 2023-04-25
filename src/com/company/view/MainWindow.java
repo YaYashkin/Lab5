@@ -7,10 +7,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 public class MainWindow extends JFrame {
     private JTable jTable;
@@ -61,15 +58,46 @@ public class MainWindow extends JFrame {
                 label3 = new JLabel("Кол-во часов");
                 label4 = new JLabel("");
                 jComboBox.setSelectedIndex(0);
+
+//                KeyAdapter numericKeyAdapter = new KeyAdapter() {
+//                    public void keyTyped(KeyEvent e) {
+//                        char c = e.getKeyChar();
+//                        if (((c >= '0') && (c <= '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+//                            e.consume();
+//                        }
+//                    }
+//                };
+
+//                KeyAdapter alphanumericKeyAdapter = new KeyAdapter() {
+//                    public void keyTyped(KeyEvent e) {
+//                        // В этом примере разрешаем ввод букв и цифр, а также символа пробела
+//                        char c = e.getKeyChar();
+//                        if (!((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == KeyEvent.VK_SPACE || c == KeyEvent.VK_BACK_SPACE)) {
+//                            e.consume();
+//                        }
+//                    }
+//                };
+
+
+
                 jComboBox.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if(jComboBox.getSelectedIndex() == 0){
                             label3.setText("Кол-во часов");
+
+                            //jTextField2.removeKeyListener(alphanumericKeyAdapter);
+                            //jTextField2.addKeyListener(numericKeyAdapter);
                         }else if(jComboBox.getSelectedIndex() == 1){
                             label3.setText("Должность");
+
+//                            jTextField2.removeKeyListener(numericKeyAdapter);
+//                            jTextField2.addKeyListener(alphanumericKeyAdapter);
                         }else if(jComboBox.getSelectedIndex() == 2){
                             label3.setText("Кол-во подчинённых людей");
+
+//                            jTextField2.removeKeyListener(alphanumericKeyAdapter);
+//                            jTextField2.addKeyListener(numericKeyAdapter);
                         }
                     }
                 });
@@ -95,6 +123,7 @@ public class MainWindow extends JFrame {
                         }
                     }
                 });
+
                 jTextField1.addKeyListener(new KeyAdapter() {
                     public void keyTyped(KeyEvent e) {
                         char c = e.getKeyChar();
@@ -102,7 +131,29 @@ public class MainWindow extends JFrame {
                             e.consume();
                         }
                     }
+
                 });
+
+
+
+
+
+
+
+
+
+
+//                if(jComboBox.getSelectedIndex() == 0 || jComboBox.getSelectedIndex() == 2){
+//                    jTextField2.addKeyListener(new KeyAdapter() {
+//                        public void keyTyped(KeyEvent e) {
+//                            char c = e.getKeyChar();
+//                            if ( ((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+//                                e.consume();
+//                            }
+//                        }
+//                    });
+//                }
+
 
                 JPanel jPanel = new JPanel(new FlowLayout());
 
@@ -124,6 +175,8 @@ public class MainWindow extends JFrame {
                 jDialog.setVisible(true);
             }
         });
+
+
 
         jComboBox = new JComboBox(new String[]{
                 "Рабочий",
